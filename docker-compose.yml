@@ -1,0 +1,23 @@
+version: '3.3'
+
+services:
+  redis-col:
+    image: rstash/redis-col
+    container_name: redis-col
+    build: ./service-redis
+    volumes:
+      - ./service-redis/config:/app/config
+    ports:
+      - 6379:6379 # <Host Port>:<Container Port>
+   # tty: true
+#    restart: always
+
+  rsyslog-col:
+    image: rstash/rsyslog-col
+    container_name: rsyslog-col
+    build: ./service-rsyslog
+    volumes:
+        - ./service-rsyslog/config:/app/config
+    ports:
+        - 5514:514
+    #restart: always
