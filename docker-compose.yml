@@ -22,3 +22,14 @@ services:
     ports:
         - 5514:514
     #restart: always
+
+  logstash:
+    image: rstash/logstash
+    container_name: logstash-col
+    build: ./service-logstash
+    volumes:
+        - ./service-logstash/config:/app/config
+        - ./service-logstash/data:/app/data
+        - ./service-logstash/logs:/app/logs
+    links:
+        - redis-col

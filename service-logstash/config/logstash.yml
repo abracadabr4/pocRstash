@@ -1,0 +1,5 @@
+path.data: /app/data
+path.config: /app/config/pipelines.config
+pipeline.unsafe_shutdown: true
+path.logs: /app/logs
+
