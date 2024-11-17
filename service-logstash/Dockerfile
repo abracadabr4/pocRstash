@@ -5,6 +5,9 @@ RUN apt-get update && apt-get install -y gpg
 RUN echo "deb [signed-by=/usr/share/keyrings/elasticsearch-keyring.gpg] https://artifacts.elastic.co/packages/7.x/apt stable main" | tee /etc/apt/sources.list.d/elastic-8.x.list
 RUN wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | gpg --dearmor -o /usr/share/keyrings/elasticsearch-keyring.gpg \
         && apt-get update && apt-get install -y logstash=1:7.17.18-1
+RUN apt-get install -y ca-certificates
+COPY ./myCA.pem /usr/local/share/ca-certificates/
+RUN update-ca-certificates
 
 WORKDIR /home/logstash
 
