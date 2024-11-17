@@ -1,0 +1,5 @@
+basicConstraints=CA:TRUE,pathlen:0
+keyUsage=digitalSignature,keyEncipherment,keyCertSign,cRLSign
+extendedKeyUsage=serverAuth
+subjectKeyIdentifier=hash
+authorityKeyIdentifier=keyid,issuer

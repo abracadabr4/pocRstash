@@ -8,14 +8,15 @@ services:
     volumes:
       - ./service-redis/config:/app/config
     ports:
-      - 6379:6379 # <Host Port>:<Container Port>
-   # tty: true
+      - 6380:6380
 #    restart: always
 
   rsyslog-col:
     image: rstash/rsyslog-col
     container_name: rsyslog-col
     build: ./service-rsyslog
+    links:
+        - redis-col # allow rsyslog to push within redis using the "not ssl socket" on 6379
     volumes:
         - ./service-rsyslog/config:/app/config
     ports:
